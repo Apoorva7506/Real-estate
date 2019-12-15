@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include "nav.html"%}
+
+
+
+
+
+
+<div class="container ">
+<div class="bg-primary text-white m-3 rounded ">
+<h1><center>User Information:</center></h1></div>
+<div class="m-3">
+<div class="bg-primary text-white pl-4">
+User name:
+</div>
+<div class=" bg-dark text-white" >
+<center>{{user.username}}</center>
+</div>
+</div>
+
+
+<div class="m-3">
+<div class=" bg-primary text-white pl-4">
+First name:
+</div>
+<div class=" bg-dark text-white" >
+<center>{{user.first_name}}</center>
+</div>
+</div>
+
+
+<div class="m-3">
+<div class=" bg-primary text-white pl-4">
+Last name:
+</div>
+<div class=" bg-dark text-white">
+<center>{{user.last_name}}</center>
+</div>
+</div>
+
+
+<div class="m-3">
+<div class=" bg-primary text-white pl-4">
+Email:
+</div>
+<div class=" bg-dark text-white" >
+<center>{{user.email}}</center>
+</div>
+</div>
+
+
+
+
+
+
+<br><br>
+
+ <form action={% url 'pchange'%} method='POST'>
+
+                {% csrf_token %}
+  <div class="form-group">
+                  <label for="password">Change Password :</label>
+                  <input type="text" name="password" class="form-control" required>
+                </div>
+ <input type="submit" value="Change Password" class="btn btn-primary bc btn-block">
+              </form>
+
+
+
+
+
+
+<br><br>
+
+ <form action={% url 'delete'%} method='POST'>
+
+                {% csrf_token %}
+ <input type="submit" value="Delete Account" class="btn btn-primary bc btn-block">
+              </form>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+         <footer class="bgred fixed-bottom" style="font-size: 24px;color:#fff">
+                   <center>  Contact Us For Help!!!</center>
+               </footer>
+                  
+                  
+                    
+   
+            
+
+
+                   
+
+    
+{% endblock %}

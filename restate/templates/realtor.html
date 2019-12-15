@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% include 'nav.html'%}
+
+
+
+<div class="container">
+<div class="row">
+
+
+ <section id="listing" class="py-4">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-md-9">
+          
+          <img src="{{r.photo.url}}" alt="" class="img-main img-fluid mb-3"style="width:100% ;">
+
+
+
+
+
+  </div></div> Name :<h2>{{r.name}}</h2>
+
+  Contact:{{r.contact}}
+<br>
+  Email:{{r.email}}
+<br>
+  Description:<br><p>{{r.description}}</p>
+</div></div></div>
+    <footer class="bgred " style="font-size: 24px;color:#fff">
+                   <center>  Contact Us For Help!!!</center>
+               </footer>
+{% endblock %}

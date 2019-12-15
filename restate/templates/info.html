@@ -1,0 +1,96 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% include "nav.html" %}
+
+
+
+
+
+  <section id="listing" class="py-4">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-md-9">
+          
+          <img src="{{h.photo_main.url}}" alt="" class="img-main img-fluid mb-3"style="width:100% ;">
+          
+          <div class="row mb-5 thumbs">
+            <div class="col-md-2">
+              <a href="{{h.photo_1}}" >
+                <img src="{{h.photo_1}}" alt="" class="img-fluid">
+              </a>
+            </div>
+            <div class="col-md-2">
+              <a href="{{h.photo_2}}" >
+                <img src="{{h.photo_2}}" alt="" class="img-fluid">
+              </a>
+            </div>
+            <div class="col-md-2">
+              <a href="{{h.photo_3}}" >
+                <img src="{{h.photo_3}}" alt="" class="img-fluid">
+              </a>
+            </div>
+            
+            
+            
+          </div>
+          <div class="bg-dark text-white rounded p-3">
+          <center><h3>{{h.hname}}</h3></center></div>
+         
+          <div class="row mb-5 fields">
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  Rent:
+                  <span class="float-right">{{h.rate}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-bed"></i> Bedrooms:
+                  <span class="float-right">{{h.bedrooms}}</span>
+                </li>
+                 <li class="list-group-item text-secondary">
+                   Address: <p>
+                  <span>{{h.address}}</span></p>
+                </li>
+                
+                
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                City: 
+                  <span class="float-right">{{h.city}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  Area:
+                  <span class="float-right">{{h.area}}
+                  </span>
+                </li>
+               
+                <li class="list-group-item text-secondary">
+                   Realtor:
+                  <a href="{% url 'realtors' h.realtor.id %}"   <span class="float-right">{{h.realtor}}
+                  </span></a>
+                </li>
+
+
+              </ul>
+            </div></div>
+   <span class="mb-4">       
+  <h2 >Description :</h2>
+             {{h.description}}</span><br><br><br>
+            </div>
+          </div>
+       </div>
+
+
+
+  <footer class="bgred " style="font-size: 24px;color:#fff">
+                   <center>  Contact Us For Help!!!</center>
+               </footer>
+
+
+{% endblock %}
