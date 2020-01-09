@@ -1,4 +1,4 @@
-# This is a RESTful real estate site created usind Django, Django Rest Framework and frontend technologies.
+# This is a RESTful real estate site created using Django, Django Rest Framework and frontend technologies.
 
 - Site includes Search Feature and Pagination.
 - User authentication done using django.
