@@ -4,3 +4,4 @@
 - User authentication done using django.
 - Access to Api requires Token Authentication.(Django REST Framework).
 - Elegant Design using Html,CSS, Bootstrap and Javascript.
+- Checkout Screesnshot section for more.
