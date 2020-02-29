@@ -10,9 +10,11 @@
 
   <section id="listing" class="py-4">
     <div class="container">
+
       
       <div class="row">
-        <div class="col-md-9">
+        
+        <div class="col-md-8">
           
           <img src="{{h.photo_main.url}}" alt="" class="img-main img-fluid mb-3"style="width:100% ;">
           
@@ -32,10 +34,13 @@
                 <img src="{{h.photo_3}}" alt="" class="img-fluid">
               </a>
             </div>
+
+           
             
             
             
           </div>
+          
           <div class="bg-dark text-white rounded p-3">
           <center><h3>{{h.hname}}</h3></center></div>
          
@@ -71,9 +76,7 @@
                 </li>
                
                 <li class="list-group-item text-secondary">
-                   Realtor:
-                  <a href="{% url 'realtors' h.realtor.id %}"   <span class="float-right">{{h.realtor}}
-                  </span></a>
+                   
                 </li>
 
 
@@ -83,10 +86,82 @@
   <h2 >Description :</h2>
              {{h.description}}</span><br><br><br>
             </div>
+
+            <div class="col-md-4"> 
+              <div class="card">
+                <img class="card-img-top hit" src="{{h.realtor.photo.url}}" alt="Card image">
+  
+              
+<div class="card-body">
+
+
+<h3>Property Realtor: <br>
+ 
+      <a href="{% url 'realtors' h.realtor.id %}" style="text-decoration: none;">  <span>{{h.realtor}}
+      </span></a></h3>
+      <br>
+     
+
+ 
+
+
+</div></div><br>
+<button class="btn-danger bc btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
+
+<div class="modal fade" id="inquiryModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'contact' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+
+              <input type="hidden" value="{{user.id}}" name="user_id">
+              <input type="hidden" value="{{h.realtor.email}}" name="realtor_email">
+              <input type="hidden" value="{{h.id}}" name="listing_id">
+
+              <label for="property_name" class="col-form-label">Property:</label>
+              <input type="text" name="listing" class="form-control" value="{{h.hname}}" >
+            </div>
+            
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" name="name" class="form-control" value="{{user.username}}" >
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="email" name="email" class="form-control" value="{{user.email}}">
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Phone:</label>
+              <input type="text" name="phone" class="form-control" >
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Message:</label>
+              <textarea name="message" class="form-control"></textarea>
+            </div>
+            <hr>
+            <input type="submit" value="Send" class="btn btn-block btn-secondary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
           </div>
+
+         
        </div>
-
-
+</div>
+       
 
   <footer class="bgred " style="font-size: 24px;color:#fff">
                    <center>  Contact Us For Help!!!</center>

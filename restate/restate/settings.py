@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api1.apps.Api1Config',
     'rest_framework.authtoken',
+    'contacts.apps.ContactsConfig'
 ]
 
 
@@ -142,3 +143,12 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+
+
+#Email_Config
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='apoorvaflame@gmail.com'
+EMAIL_HOST_PASSWORD='Animax12#'
+EMAIL_USE_TLS=True

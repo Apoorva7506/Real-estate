@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app1.urls')),
     path('accounts/',include('accounts.urls')),
+    path('contacts/',include('contacts.urls')),
     path('api/',include('api1.urls')),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
 
