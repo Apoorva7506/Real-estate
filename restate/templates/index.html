@@ -1,14 +1,8 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %}
 {% block content %}
-
 {% include "nav.html"%}
 
-
-   
-               
-     <div id="demo" class="carousel slide " data-ride="carousel">
-
+<div id="demo" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ul class="carousel-indicators">
     <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -18,33 +12,32 @@
 
   <!-- The slideshow -->
   <div class="carousel-inner">
-      
-      
     <div class="carousel-item active">
-      <img class="sizer" src="{% static 'img/h1.jpg' %}" alt="Los Angeles">
-      <center> <div style="background-color: rgba(0, 0, 0, 0.8); z-index:2;  "class="carousel-caption">
-    
-    <h2>Come Find Your Dream Home with Us!</h2>
-          </div></center>
-    
+      <img class="sizer" src="{% static 'img/h1.jpg' %}" alt="Los Angeles" />
+      <center>
+        <div style="background-color: rgba(0, 0, 0, 0.8); z-index: 2;" class="carousel-caption">
+          <h2>Come Find Your Dream Home with Us!</h2>
+        </div>
+      </center>
     </div>
     <div class="carousel-item">
-      <img class="sizer" src="{% static 'img/h2.jpg'%}"  alt="Chicago">
-        <center> <div style="background-color: rgba(0, 0, 0, 0.8);z-index:2; "class="carousel-caption">
-    
-    <h2>It's Not Just A House, Its your Home</h2>
-          </div></center>
+      <img class="sizer" src="{% static 'img/h2.jpg'%}" alt="Chicago" />
+      <center>
+        <div style="background-color: rgba(0, 0, 0, 0.8); z-index: 2;" class="carousel-caption">
+          <h2>It's Not Just A House, Its your Home</h2>
+        </div>
+      </center>
     </div>
     <div class="carousel-item">
-      <img class="sizer" src="{% static 'img/h3.jpg' %}" alt="New York">
-        <center> <div style="background-color: rgba(0, 0, 0, 0.8); z-index:2; "class="carousel-caption">
-    
-                <h2>Bachelor's Allowed!<br>Party Mode:ON</h2>
-          </div></center>
-      
+      <img class="sizer" src="{% static 'img/h3.jpg' %}" alt="New York" />
+      <center>
+        <div style="background-color: rgba(0, 0, 0, 0.8); z-index: 2;" class="carousel-caption">
+          <h2>Bachelor's Allowed!<br />Party Mode:ON</h2>
+        </div>
+      </center>
     </div>
   </div>
-  
+
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -52,84 +45,50 @@
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
-
 </div>
-               
-              <div class="container-fluid m-2 ">
-                   <div class="row justify-content-around">
-               <div class="card col-lg-3 p-0  ">
-  
-                   <div class="card-header bgred star1">Gokul Homes</div>
-                   <img class="card-img-top hit" src="{% static 'img/gokul.jpg' %}" alt="Card image" style="width:100%">
-  <div class="card-body">
-  
-  
-  
-      <ul><b>
-          <li>
-              Rent: 18,000
-          </li>
-          <li>
-              Location: Ghatkopar
-          </li></b>
-   </ul>
-      <button class="btn float-right bc btn-danger">View</button></div>
-  
-  
+
+<div class="container-fluid m-2">
+  <div class="row justify-content-around">
+
+    {% for h in houses %}
+
+    <div class="card p-0 m-3 col-3">
+
+      <div class="card-header bgred star1">{{h.hname}}</div>
+      <img class="card-img-top hit" src="{{h.photo_main.url }}" alt="Card image" style="width:100%">
+      <div class="card-body bg-light>
+      
+      
+      <b>
+         
+              
+              <span class=" m-4"> Rent: {{h.rate}}</span>
+
+
+        <span class="m-4"> City: {{h.city}}</span>
+        <br>
+
+        <span> Area: {{h.area}}</span>
+
+        </b>
+
+
+
+        <a href="{% url 'infoh' h.id%}" class="btn btn-danger btn-lg bc float-right">View</a>
+
+
+
+      </div>
+    </div>
+
+
+    {% endfor %}
+  </div>
 </div>
-                        <div class="card col-lg-3 p-0  ">
-  
-                   <div class="card-header bgred star1">Vrinda Apts.</div>
-                   <img class="card-img-top hit" src="{% static 'img/h1.jpg' %}" alt="Card image" style="width:100%">
-  <div class="card-body">
-  
-  
-  
-      <ul><b>
-          <li>
-              Rent: 20,000
-          </li>
-          <li>
-              Location: Borivali
-          </li></b>
-   </ul><button class="btn float-right bc btn-danger">View</button></div>
-  
-  
 </div>
-                       
-                        <div class="card col-lg-3  p-0 ">
-  
-                   <div class="card-header bgred star1">Dom Hosts</div>
-                   <img class="card-img-top hit" src="{% static 'img/h2.jpg' %}" alt="Card image" style="width:100%">
-  <div class="card-body">
-  
-  
-  
-      <ul><b>
-          <li>
-              Rent: 10,000
-          </li>
-          <li>
-              Location: Dombivli
-          </li></b>
-   </ul><button class="btn btn-danger bc nav-link float-right">View</button></div>
-  
-  
-                        </div></div></div>
-                       
-                       
-                       
-               <footer class="bgred " style="font-size: 24px;color:#fff">
-                   <center>  Contact Us For Help!!!</center>
-               </footer>
-                  
-                  
-                    
-   
-            
 
+<footer class=" bgred" style="font-size: 24px; color: #fff;">
+  <center>Contact Us For Help!!!</center>
+</footer>
 
-                   
-
-    
 {% endblock %}

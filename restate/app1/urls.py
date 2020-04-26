@@ -9,7 +9,8 @@ urlpatterns=[
     path("browse/", views.browse, name='browse'),
     path('<int:h_id>', views.infoh, name='infoh'),
     path('search/', views.search, name='search'),
-    path('about/',views.about,name='about')
+    path('about/',views.about,name='about'),
+   
 
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

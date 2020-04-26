@@ -17,24 +17,25 @@ def register(request):
         if (password==password2):
 
             if User.objects.filter(username=username).exists():
-                return HttpResponse("Username already exists")
+                return HttpResponse("<center><h1>Username already exists<br>"+ '<a href="/">Click to go back to Index</a></center></h1>')
             
             else:
                 if User.objects.filter(email=email).exists():
-                    return HttpResponse("Email already exists")
+                    return HttpResponse("<center><h1>Email already exists<br>"+ '<a href="/">Click to go back to Index</a></center></h1>')
 
                 else:
 
                     user=User.objects.create_user(username=username,first_name=first_name,last_name=last_name,
                     email=email,password=password)
                     user.save()
-                    return HttpResponse("U r registered now")
+                    html="<h1><center>You are now registered<br>" + '<a href="/">Click to go back to Index</a></center></h1>'
+                    return HttpResponse(html)
 
 
 
 
         else :
-            return HttpResponse("Passwords Dont Match")
+            return HttpResponse("<center><h1>Passwords Don't Match<br>"+ '<a href="/">Click to go back to Index</a></center></h1>')
 
     else:
     
@@ -52,11 +53,11 @@ def login(request):
             auth.login(request,user)
             return redirect('index')
         else:
-            return redirect('login')
+            return HttpResponse("<center><h1>Invalid Credentials Try Again<br>"+ '<a href="/">Click to go back to Index</a></center></h1>')
    
    
    
-    return render(request,'index.html')
+   
 
 
 def logout(request):
@@ -80,9 +81,10 @@ def settings(request):
 
 def delete(request):
     cuser=request.user
+    
     cuser.delete()
-    auth.logout()
-    return render(request,'index.html')
+    return redirect('index')
+    
 
 
 def pchange(request):

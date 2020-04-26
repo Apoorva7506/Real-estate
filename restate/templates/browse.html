@@ -4,167 +4,169 @@
 {% include 'nav.html '%}
 
 <section id="showcase">
-    <div class="container text-center">
-      <div class="home-search p-5">
-        <div class="overlay p-5">
-          <h1 class="display-4 mb-4">
-            Come Find your Abode
-          </h1>
-          <p class="lead">Trust me you won't get anything better</p>
-          <div class="search">
-            <form action="{% url 'search'%}">
-              <!-- Form Row 1 -->
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label class="sr-only">Keywords</label>
-                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Station, Link Road, etc)">
-                </div>
-
-                <div class="col-md-4 mb-3">
-                  <label class="sr-only">Area</label>
-                  <input type="text" name="area" class="form-control" placeholder="Area">
-                </div>
-
-                <div class="col-md-4 mb-3">
-                  <label class="sr-only">City</label>
-                  <select name="city" class="form-control">
-                    <option selected="true" disabled="disabled">City</option>
-                   {% for k,v in city_choices.items %}
-
-                    <option value="{{k}}">{{v}}</option>
-
-
-                   {% endfor %}
-                    
-                    
-                 
-                  </select>
-                </div>
+  <div class="container text-center">
+    <div class="home-search p-5">
+      <div class="overlay p-5">
+        <h1 class="display-4 mb-4">
+          Come Find your Abode
+        </h1>
+        <p class="lead">Trust me you won't get anything better</p>
+        <div class="search">
+          <form action="{% url 'search'%}">
+            <!-- Form Row 1 -->
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">Keywords</label>
+                <input type="text" name="keywords" class="form-control" placeholder="Keyword (Station, Link Road, etc)">
               </div>
-              <!-- Form Row 2 -->
-              <div class="form-row">
-                <div class="col-md-6 mb-3">
-                  <label class="sr-only">Bedrooms</label>
-                  <select name="bedrooms" class="form-control">
-                    <option selected="true" disabled="disabled">Bedrooms (All)</option>
-                   {% for k,v in bedroom_choices.items %}
 
-                    <option value="{{k}}">{{v}}</option>
-
-                    {% endfor %}
-                  
-                  </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <select name="price" class="form-control" id="type">
-                    <option selected="true" disabled="disabled">Max Rent (Any)</option>
-                   {% for k,v in price_choices.items %}
-
-                    <option value="{{k}}">{{v}}</option>
-
-                    {% endfor %}
-                    
-                  </select>
-                </div>
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">Area</label>
+                <input type="text" name="area" class="form-control" placeholder="Area">
               </div>
-              <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
-            </form>
-          </div>
+
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">City</label>
+                <select name="city" class="form-control">
+                  <option selected="true" disabled="disabled">City</option>
+                  {% for k,v in city_choices.items %}
+
+                  <option value="{{k}}">{{v}}</option>
+
+
+                  {% endfor %}
+
+
+
+                </select>
+              </div>
+            </div>
+            <!-- Form Row 2 -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">Bedrooms</label>
+                <select name="bedrooms" class="form-control">
+                  <option selected="true" disabled="disabled">Bedrooms (All)</option>
+                  {% for k,v in bedroom_choices.items %}
+
+                  <option value="{{k}}">{{v}}</option>
+
+                  {% endfor %}
+
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <select name="price" class="form-control" id="type">
+                  <option selected="true" disabled="disabled">Max Rent (Any)</option>
+                  {% for k,v in price_choices.items %}
+
+                  <option value="{{k}}">{{v}}</option>
+
+                  {% endfor %}
+
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+          </form>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 {% for h in houses %}
 <div class="container">
-<div class="card p-0 m-3">
-  
-                   <div class="card-header bgred star1">{{h.hname}}</div>
-                   <img class="card-img-top hit" src="{{h.photo_main.url }}" alt="Card image" style="width:100%">
-  <div class="card-body bg-light>
+  <div class="card p-0 m-3">
+
+    <div class="card-header bgred star1">{{h.hname}}</div>
+    <img class="card-img-top hit" src="{{h.photo_main.url }}" alt="Card image" style="width:100%">
+    <div class="card-body bg-light>
   
   
   <b>
      
           
-          <span class="m-4">  Rent: {{h.rate}}</span>
-          
-           
-           <span class="m-4">  City: {{h.city}}</span>
-          
-          
-            <span class="m-4"> Area: {{h.area}}</span>
-          
-  </b>
-   
-   <a href="{% url 'infoh' h.id%}" class="btn btn-danger btn-lg bc float-right">View</a>
-  
+          <span class=" m-4"> Rent: {{h.rate}}</span>
+
+
+      <span class="m-4"> City: {{h.city}}</span>
+
+
+      <span class="m-4"> Area: {{h.area}}</span>
+
+      </b>
+
+      <a href="{% url 'infoh' h.id%}" class="btn btn-danger btn-lg bc float-right">View</a>
+
+    </div>
   </div>
- </div></div>
+</div>
 
 {% endfor %}
 
 
 <div class="row justify-content-center">
-<center>
-        <div class="col-md-12">
-        {% if houses.has_other_pages%}
-            <ul class="pagination">
-            {% if houses.has_previous%}
+  <center>
+    <div class="col-md-12">
+      {% if houses.has_other_pages%}
+      <ul class="pagination">
+        {% if houses.has_previous%}
 
-                <li class="page-item">
-                <a class="page-link" href="?page={{houses.previous_page_number}}">&laquo;</a>
-                </li>
-            {% else %}
-                
-                <li class="page-item disabled">
-                <a class="page-link" >&laquo;</a>
-                </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{houses.previous_page_number}}">&laquo;</a>
+        </li>
+        {% else %}
 
-
-                </li>
-            {% endif %}
-
-            {% for i in houses.paginator.page_range%}
-                {% if houses.number == i %}
-                    <li class="page-item active">
-                    <a class="page-link" >{{i}}</a>
-                    </li>
-
-                {% else %}
-                    <li class="page-item ">
-                    <a class="page-link" href="?page={{i}}">{{i}}</a>
-                    </li>
-
-                {% endif %}
-            {% endfor %}
-
-            {% if houses.has_next%}
-
-                <li class="page-item">
-                <a class="page-link" href="?page={{houses.next_page_number}}">&raquo;</a>
-                </li>
-            {% else %}
-                
-                <li class="page-item disabled">
-                <a class="page-link" >&raquo;</a>
-                </li>
+        <li class="page-item disabled">
+          <a class="page-link">&laquo;</a>
+        </li>
 
 
-                </li>
-            {% endif %}
-               
-                
-                
-            </ul>
+        </li>
         {% endif %}
-            </div>
-        </div>
-        </div></div>
 
-  <footer class="bgred " style="font-size: 24px;color:#fff">
-                   <center>  Contact Us For Help!!!</center>
-               </footer>
+        {% for i in houses.paginator.page_range%}
+        {% if houses.number == i %}
+        <li class="page-item active">
+          <a class="page-link">{{i}}</a>
+        </li>
+
+        {% else %}
+        <li class="page-item ">
+          <a class="page-link" href="?page={{i}}">{{i}}</a>
+        </li>
+
+        {% endif %}
+        {% endfor %}
+
+        {% if houses.has_next%}
+
+        <li class="page-item">
+          <a class="page-link" href="?page={{houses.next_page_number}}">&raquo;</a>
+        </li>
+        {% else %}
+
+        <li class="page-item disabled">
+          <a class="page-link">&raquo;</a>
+        </li>
+
+
+        </li>
+        {% endif %}
+
+
+
+      </ul>
+      {% endif %}
+    </div>
+</div>
+</div>
+</div>
+
+<footer class="bgred " style="font-size: 24px;color:#fff">
+  <center> Contact Us For Help!!!</center>
+</footer>
 
 {% endblock %}

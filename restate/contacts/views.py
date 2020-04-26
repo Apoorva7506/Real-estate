@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Contact
 from django.core.mail import send_mail
+import os
 
 def contact(request):
     if request.method=='POST':
@@ -19,10 +20,10 @@ def contact(request):
         contact.save()
 
         send_mail('Property Listing Enquiry',
-        'There Has been an inquiry for'+listing+'. Check it out',
-        'apoorvaflame@gmail.com',
-        [realtor_email,'oregairu9930@gmail.com'],
+        'There Has been an inquiry for '+listing+' by ' +name+" \nTheir email is: "+email+ '.\n Check it out'+"\nMessage: \n"+message,
+        os.environ.get('user_email'),
+        [realtor_email],
         fail_silently=False)
 
-        return HttpResponse("Your request has been submitted")
+        return HttpResponse("<h1><center>Your request has been submitted<br>"+'<a href="/">Click to go back to Index</a></center></h1>')
         

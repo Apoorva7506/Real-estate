@@ -5,7 +5,8 @@ from .choices import city_choices,bedroom_choices,price_choices
 from django.core.paginator import EmptyPage, PageNotAnInteger,Paginator
 
 def index(request):
-    return render(request,'index.html')
+    houses= Flats.objects.all()
+    return render(request,'index.html',{'houses':houses})
 
 def realtors(request,r_id):
     realtors=get_object_or_404(Realtor, pk=r_id)
@@ -22,7 +23,7 @@ def browse(request):
     page=request.GET.get('page')
     paged_houses=paginator.get_page(page)
     
-    
+
     
     
     
@@ -41,6 +42,10 @@ def browse(request):
 
 def infoh(request, h_id):
 
+    html="<h1><center>Please Log in to view the houses<br>" + '<a href="/">Click to go back to Index</a></center></h1>'
+    
+    if( not request.user.is_authenticated):
+        return HttpResponse(html)
 
     house=get_object_or_404(Flats, pk=h_id)
     context={
@@ -49,6 +54,8 @@ def infoh(request, h_id):
     return render(request,'info.html',context)
 
 
+
+   
 
 def search(request):
 
