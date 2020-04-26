@@ -6,115 +6,117 @@
 
 
 <section id="showcase">
-    <div class="container text-center">
-      <div class="home-search p-5">
-        <div class="overlay p-5">
-          <h1 class="display-4 mb-4">
-            Come Find your Abode
-          </h1>
-          <p class="lead">Trust me you won't get anything better</p>
-          <div class="search">
-            <form action="{% url 'search'%}">
-              <!-- Form Row 1 -->
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label class="sr-only">Keywords</label>
-                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Station, Link Road, etc)"
+  <div class="container text-center">
+    <div class="home-search p-5">
+      <div class="overlay p-5">
+        <h1 class="display-4 mb-4">
+          Come Find your Abode
+        </h1>
+        <p class="lead">Trust me you won't get anything better</p>
+        <div class="search">
+          <form action="{% url 'search'%}">
+            <!-- Form Row 1 -->
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">Keywords</label>
+                <input type="text" name="keywords" class="form-control" placeholder="Keyword (Station, Link Road, etc)"
                   value={{values.keywords}}>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                  <label class="sr-only">Area</label>
-                  <input type="text" name="area" class="form-control" placeholder="Area" value={{values.area}}>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                  <label class="sr-only">City</label>
-                  <select name="city" class="form-control">
-                    <option selected="true" disabled="disabled">City</option>
-                   {% for k,v in city_choices.items %}
-
-                    <option value="{{k}}"
-                    {% if values.city == k %} selected {% endif %}>{{v}}</option>
-
-
-                   {% endfor %}
-                    
-                    
-                 
-                  </select>
-                </div>
               </div>
-              <!-- Form Row 2 -->
-              <div class="form-row">
-                <div class="col-md-6 mb-3">
-                  <label class="sr-only">Bedrooms</label>
-                  <select name="bedrooms" class="form-control">
-                    <option selected="true" disabled="disabled">Bedrooms (All)</option>
-                   {% for k,v in bedroom_choices.items %}
 
-                    <option value="{{k}}" {% if k == values.bedrooms %} selected {% endif %}>{{v}}</option>
-
-                    {% endfor %}
-                  
-                  </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <select name="price" class="form-control" id="type">
-                    <option selected="true" disabled="disabled">Max Rent (Any)</option>
-                   {% for k,v in price_choices.items %}
-
-                    <option value="{{k}}" {% if k == values.price %} selected {% endif %}>{{v}}</option>
-
-                    {% endfor %}
-                    
-                  </select>
-                </div>
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">Area</label>
+                <input type="text" name="area" class="form-control" placeholder="Area" value={{values.area}}>
               </div>
-              <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
-            </form>
-          </div>
+
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">City</label>
+                <select name="city" class="form-control">
+                  <option selected="true" disabled="disabled">City</option>
+                  {% for k,v in city_choices.items %}
+
+                  <option value="{{k}}" {% if values.city == k %} selected {% endif %}>{{v}}</option>
+
+
+                  {% endfor %}
+
+
+
+                </select>
+              </div>
+            </div>
+            <!-- Form Row 2 -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">Bedrooms</label>
+                <select name="bedrooms" class="form-control">
+                  <option selected="true" disabled="disabled">Bedrooms (All)</option>
+                  {% for k,v in bedroom_choices.items %}
+
+                  <option value="{{k}}" {% if k == values.bedrooms %} selected {% endif %}>{{v}}</option>
+
+                  {% endfor %}
+
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <select name="price" class="form-control" id="type">
+                  <option selected="true" disabled="disabled">Max Rent (Any)</option>
+                  {% for k,v in price_choices.items %}
+
+                  <option value="{{k}}" {% if k == values.price %} selected {% endif %}>{{v}}</option>
+
+                  {% endfor %}
+
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+          </form>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 
 {% for h in houses %}
-<div class="container">
-<div class="card p-0 m-2 container">
-  
-                   <div class="card-header bgred star1">{{h.hname}}</div>
-                   <img class="card-img-top hit" src="{{h.photo_main.url }}" alt="Card image" style="width:100%">
-  <div class="card-body bg-light>
+<div class="container" style="margin-bottom:100px;">
+  <div class="card p-0 m-2 container">
+
+    <div class="card-header bgred star1">{{h.hname}}</div>
+    <img class="card-img-top hit" src="{{h.photo_main.url }}" alt="Card image" style="width:100%">
+    <div class="card-body bg-light>
   
   
 
        <b>
           
-          <span class="m-4">  Rent: {{h.rate}}</span>
-          
-           
-           <span class="m-4">  City: {{h.city}}</span>
-          
-          
-            <span class="m-4"> Area: {{h.area}}</span> </b>
-          
- 
-   
-   <a href="{% url 'infoh' h.id%}" class="btn btn-danger btn-lg bc float-right">View</a>
-  
+          <span class=" m-4"> Rent: {{h.rate}}</span>
+
+
+      <span class="m-4"> City: {{h.city}}</span>
+
+
+      <span class="m-4"> Area: {{h.area}}</span> </b>
+
+
+
+      <a href="{% url 'infoh' h.id%}" class="btn btn-danger btn-lg bc float-right">View</a>
+
+    </div>
   </div>
- </div></div>
-   
+</div>
+
 
 {% endfor %}
 
-<footer class="bgred " style="font-size: 24px;color:#fff">
-                   <center>  Contact Us For Help!!!</center>
-               </footer>
-
+<div style="margin-top: 100px;">
+  <footer class="  bgred "
+    style="z-index:3;margin-top:100px; position:fixed; bottom:0 ;font-size: 24px; color: #fff;width:100%">
+    <center>Contact Us For Help!!!</center>
+  </footer>
+</div>
 
 
 

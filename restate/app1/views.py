@@ -5,7 +5,8 @@ from .choices import city_choices,bedroom_choices,price_choices
 from django.core.paginator import EmptyPage, PageNotAnInteger,Paginator
 
 def index(request):
-    houses= Flats.objects.all()
+    h= Flats.objects.all()
+    houses=h[:3]
     return render(request,'index.html',{'houses':houses})
 
 def realtors(request,r_id):
