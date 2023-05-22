@@ -3,7 +3,7 @@
 - Site includes Search Feature and Pagination.
 - User authentication done using django.
 ### Access to Api requires Token Authentication.(Django REST Framework).
-- Elegant Design using Html,CSS, Bootstrap and Javascript.
+- Simple yet Elegant Design using Html,CSS, Bootstrap and Javascript.
 
 
 <img src="screenshotsrestate/Screenshot%20(56).png" height="400">
